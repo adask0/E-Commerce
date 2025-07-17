@@ -57,7 +57,7 @@ const Advertisement = () => {
     );
 
     return (
-        <div className="flex mr-auto ml-auto relative xl:w-7xl lg:w-full bg-gray-200 overflow-hidden justify-center border-2 border-amber-900" onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
+        <div className="flex mr-auto ml-auto relative xl:w-[95vw] lg:w-full bg-gray-200 overflow-hidden justify-center border-2 border-amber-900 rounded-2xl" onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
             <div className="hidden md:block relative w-full h-full">
                 <div
                     className="flex transition-transform duration-1000 ease-in-out h-full"
