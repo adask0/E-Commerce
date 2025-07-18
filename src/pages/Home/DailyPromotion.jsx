@@ -41,13 +41,12 @@ export default function DailyPromotion() {
     }, [countdownStarted, eventName]);
 
     const handleSetCountdown = () => {
-        // Ustawienie daty na 24 godziny od teraz
         const now = new Date();
-        const endTime = new Date(now.getTime() + 24 * 60 * 60 * 1000); // 24 godziny w milisekundach
+        const endTime = new Date(now.getTime() + 24 * 60 * 60 * 1000);
 
         setEventDate(endTime.toISOString());
         setCountdownStarted(true);
-        setTimeRemaining(24 * 60 * 60 * 1000); // 24 godziny w milisekundach
+        setTimeRemaining(24 * 60 * 60 * 1000);
     };
 
     const handleStopCountDown = () => {
@@ -69,19 +68,19 @@ export default function DailyPromotion() {
 
         return (
             <>
-                <div className='flex border-1 justify-center flex-col w-[50px] h-[50px] m-auto'>
-                    <p className='m-auto font-bold'>{hours.toString().padStart(2, '0')}</p>
-                    <p className='m-auto text-[10px]'>godz.</p>
+                <div className='flex flex-col justify-center items-center bg-gray-100 rounded-lg w-14 h-14 border border-gray-200'>
+                    <p className='font-bold text-lg text-gray-800'>{hours.toString().padStart(2, '0')}</p>
+                    <p className='text-xs text-gray-500'>godz.</p>
                 </div>
-                <p className='m-auto ml-[1rem] mr-[1rem] font-bold text-2xl'>:</p>
-                <div className='flex border-1 justify-center flex-col w-[50px] h-[50px] m-auto'>
-                    <p className='m-auto font-bold'>{minutes.toString().padStart(2, '0')}</p>
-                    <p className='m-auto text-[10px]'>min.</p>
+                <span className='text-2xl font-bold text-gray-600 mx-2'>:</span>
+                <div className='flex flex-col justify-center items-center bg-gray-100 rounded-lg w-14 h-14 border border-gray-200'>
+                    <p className='font-bold text-lg text-gray-800'>{minutes.toString().padStart(2, '0')}</p>
+                    <p className='text-xs text-gray-500'>min.</p>
                 </div>
-                <p className='m-auto ml-[1rem] mr-[1rem] font-bold text-2xl'>:</p>
-                <div className='flex border-1 justify-center flex-col w-[50px] h-[50px] m-auto'>
-                    <p className='m-auto font-bold'>{seconds.toString().padStart(2, '0')}</p>
-                    <p className='m-auto text-[10px]'>sek.</p>
+                <span className='text-2xl font-bold text-gray-600 mx-2'>:</span>
+                <div className='flex flex-col justify-center items-center bg-gray-100 rounded-lg w-14 h-14 border border-gray-200'>
+                    <p className='font-bold text-lg text-gray-800'>{seconds.toString().padStart(2, '0')}</p>
+                    <p className='text-xs text-gray-500'>sek.</p>
                 </div>
             </>
         )
@@ -89,44 +88,58 @@ export default function DailyPromotion() {
 
     return(
         <div className='w-full lg:w-[33%]'>
-            <h1 className='text-3xl mb-[2rem] font-bold text-center lg:text-left'>Okazja Dnia</h1>
-            <div className='flex border-2 justify-center flex-col rounded-2xl h-full hover:cursor-pointer hover:scale-105 duration-75'>
-                <img className='w-[300px] m-auto' src={Img} alt="item" />
-                <p className='m-auto'>Item Category</p>
-                <p className='m-auto font-bold text-[2rem]'>Item Name</p>
-                <p className='m-auto text-2xl text-[#C00000] font-bold pt-[1rem] pb-[1rem]'>500zł</p>
-                <p className='m-auto text-center text-[12px]'>Cena bez promocji: 600zł<br />Najniższa cena z ostatnich 30 dni: 100zł</p>
-                <div className='w-[90%] border-[1px] m-auto mb-[1rem] mt-[1rem]'></div>
-                <p className='m-auto'>
-                    {countdownStarted && eventDate
-                        ? `Do końca promocji zostało:`
-                        : 'Kliknij Start, aby rozpocząć promocję 24h'
-                    }
-                </p>
-                <div className='m-auto mt-[1rem] mb-[1rem] flex flex-row'>
-                    {countdownStarted && formatTime(timeRemaining)}
+            <h1 className='text-3xl mb-8 font-bold text-center lg:text-left text-gray-800'>Okazja Dnia</h1>
+            <div className='bg-white rounded-lg shadow-sm border border-gray-200 p-6 h-full hover:shadow-md transition-all duration-300 hover:scale-[1.02] cursor-pointer'>
+                <div className='flex justify-center mb-4'>
+                    <img className='w-48 h-48 object-contain' src={Img} alt="item" />
                 </div>
-                <div className='flex gap-2 mt-2'>
-                    <button
-                        className='font-bold cursor-pointer'
-                        onClick={handleSetCountdown}
-                        disabled={countdownStarted}
-                    >
-                        Start
-                    </button>
-                    <button
-                        className='font-bold cursor-pointer'
-                        onClick={handleStopCountDown}
-                        disabled={!countdownStarted}
-                    >
-                        Stop
-                    </button>
-                    <button
-                        className='font-bold cursor-pointer'
-                        onClick={handleResetCountdown}
-                    >
-                        Reset
-                    </button>
+
+                <div className='text-center space-y-2'>
+                    <p className='text-sm text-gray-500 uppercase tracking-wide'>Monitory</p>
+                    <h3 className='font-bold text-xl text-gray-800'>Samsung Odyssey G7 32"</h3>
+
+                    <div className='py-4'>
+                        <p className='text-3xl font-bold text-red-600'>1 899,00 zł</p>
+                        <div className='text-xs text-gray-500 mt-2 space-y-1'>
+                            <p>Cena bez promocji: <span className='line-through'>2 299,00 zł</span></p>
+                            <p>Najniższa cena z ostatnich 30 dni: 2 099,00 zł</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div className='border-t border-gray-200 my-4'></div>
+
+                <div className='text-center'>
+                    <p className='text-sm text-gray-600 mb-4'>
+                        {countdownStarted && eventDate
+                            ? `Do końca promocji zostało:`
+                            : 'Kliknij Start, aby rozpocząć promocję 24h'
+                        }
+                    </p>
+
+                    <div className='flex justify-center items-center mb-6'>
+                        {countdownStarted && formatTime(timeRemaining)}
+                    </div>
+
+                    <div className='flex justify-center gap-3'>
+                        <button
+                            onClick={handleSetCountdown}
+                            disabled={countdownStarted}
+                        >
+                            Start
+                        </button>
+                        <button
+                            onClick={handleStopCountDown}
+                            disabled={!countdownStarted}
+                        >
+                            Stop
+                        </button>
+                        <button
+                            onClick={handleResetCountdown}
+                        >
+                            Reset
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
