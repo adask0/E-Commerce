@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
 import { Outlet, Link } from "react-router-dom";
+import { CheckoutContext } from "../../context/Context"
 
 const Header = () => {
-
-     const [isMobile, setIsMobile] = useState(window.innerWidth <= 900);
+    const [checkout] = useContext(CheckoutContext)
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 900);
 
     const menus = [
         { name: "Strona Główna", path: '/' },
         { name: "Lista Produktów", path: 'lista-produktów' },
-        { name: "Koszyk", path: '/' },
         { name: "Podsumowanie", path: '/' },
         { name: "FAQ", path: '/' },
         { name: "Kontakt", path: '/' }
@@ -44,6 +44,14 @@ const Header = () => {
                     </ul>
                 )}
             <div className="flex space-x-4">
+                <div className="relative m-auto mr-[1rem]">
+                    <Link to='koszyk' className="text-[2rem]">🛒</Link>
+                    {checkout.length > 0 && (
+                        <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-serif">
+                            {checkout.length}
+                        </span>
+                    )}
+                </div>
                 <div className="bg-blue-500 px-4 py-2 rounded cursor-pointer hover:bg-blue-400">Logowanie</div>
                 <div className="bg-green-500 px-4 py-2 rounded cursor-pointer hover:bg-green-400">Rejestracja</div>
             </div>

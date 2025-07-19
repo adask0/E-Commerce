@@ -1,56 +1,56 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 function ProductsSearch({ selectedCategories, setSelectedCategories }) {
     const [expandedCategories, setExpandedCategories] = useState({});
 
     const categories = [
-        { 
-            name: "Komputery", 
+        {
+            name: "Komputery",
             id: 'computers',
             subcategories: ["Komputery stacjonarne", "Mini PC", "Workstations"]
         },
-        { 
-            name: "Laptopy", 
+        {
+            name: "Laptopy",
             id: 'laptops',
             subcategories: ["Laptopy biznesowe", "Laptopy gamingowe"]
         },
-        { 
-            name: "Smartfony i smartwatche", 
+        {
+            name: "Smartfony i smartwatche",
             id: 'smartphones',
             subcategories: ["Smartfony i telefony (887)", "Tablety (422)", "Inteligentne zegarki (1606)", "Czytniki ebook (27)", "Ochrona na telefon (3105)"]
         },
-        { 
-            name: "Karty pamięci microSD", 
+        {
+            name: "Karty pamięci microSD",
             id: 'memory-cards',
             subcategories: ["MicroSD 32GB", "MicroSD 64GB", "MicroSD 128GB", "MicroSD 256GB", "Adaptery SD"]
         },
-        { 
-            name: "Słuchawki True Wireless", 
+        {
+            name: "Słuchawki True Wireless",
             id: 'wireless-headphones',
             subcategories: ["Słuchawki douszne", "Słuchawki nauszne", "Słuchawki gamingowe", "Słuchawki sportowe", "Etui i akcesoria"]
         },
-        { 
-            name: "Akcesoria GSM", 
+        {
+            name: "Akcesoria GSM",
             id: 'gsm-accessories',
             subcategories: ["Etui i pokrowce", "Szkła ochronne", "Folie ochronne", "Uchwyty samochodowe", "Selfie stick"]
         },
-        { 
-            name: "Akcesoria do tabletów", 
+        {
+            name: "Akcesoria do tabletów",
             id: 'tablet-accessories',
             subcategories: ["Etui do tabletów", "Klawiatury", "Rysiki", "Podstawki", "Folie ochronne"]
         },
-        { 
-            name: "Pamięci flash", 
+        {
+            name: "Pamięci flash",
             id: 'flash-memory',
             subcategories: ["Pendrive USB 3.0", "Pendrive USB-C", "Pendrive mini", "Pamięci OTG", "Pendrive wodoodporne"]
         },
-        { 
-            name: "Podzespoły komputerowe", 
+        {
+            name: "Podzespoły komputerowe",
             id: 'computer-components',
             subcategories: ["Procesory", "Karty graficzne", "Płyty główne", "Pamięci RAM", "Dyski SSD"]
         },
-        { 
-            name: "Gaming i streaming", 
+        {
+            name: "Gaming i streaming",
             id: 'gaming-streaming',
             subcategories: ["Konsole", "Kontrolery", "Mikrofony", "Kamery", "Oświetlenie LED"]
         }
