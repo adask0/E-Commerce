@@ -1,18 +1,20 @@
 import Img from '../../assets/item.png'
 import productsData from '../../products.json'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { CheckoutContext } from '../../context/Context';
 
 export default function NewProducts() {
     const [latestProducts, setLatestProducts] = useState([]);
-    
-    useEffect(() => {                         
-        const sorted = [...productsData].sort((a, b) => 
+    const [checkout, setCheckout] = useContext(CheckoutContext);
+
+    useEffect(() => {
+        const sorted = [...productsData].sort((a, b) =>
             new Date(b.dateAdded) - new Date(a.dateAdded)
         );
-        
+
         const latest = sorted.slice(0, 8);
         setLatestProducts(latest);
-            
+
     }, []);
 
     return (
@@ -36,7 +38,22 @@ export default function NewProducts() {
                             </div>
                             <div className="text-center mt-auto">
                                 <p className="text-lg font-bold text-blue-600 mb-3">{product.price}</p>
-                                <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded text-sm transition-colors">
+                                <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded text-sm transition-colors" onClick={() => {
+                                    setCheckout([
+                                        ...checkout,
+                                        {
+                                            "id": product.id,
+                                            "name": product.name,
+                                            "price": product.price,
+                                            "image": product.image,
+                                            "category": product.category,
+                                            "subcategory": product.subcategory,
+                                            "rating": product.rating,
+                                            "reviews": product.reviews,
+                                            "dateAdded": product.dateAdded
+                                        }
+                                    ])
+                                }}>
                                     Dodaj do koszyka
                                 </button>
                              </div>
