@@ -1,9 +1,14 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { CheckoutContext } from '../../context/Context'
 
 
 function Products({ products, sortBy, setSortBy }) {
     const [checkout, setCheckout] = useContext(CheckoutContext);
+
+    useEffect(() => {
+        console.log("Checkout changed:", checkout);
+        localStorage.setItem('checkout', JSON.stringify(checkout))
+    }, [checkout])
 
     return (
         <div className="flex-1 bg-white rounded-lg shadow-sm border border-gray-200 ml-0 md:ml-6">

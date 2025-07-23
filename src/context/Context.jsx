@@ -12,17 +12,15 @@ export const CheckoutProvider = ({ children }) => {
     );
 };
 
-const FinalPrice = () => {
+export const FinalPrice = () => {  // Bez children!
     const [items] = useContext(CheckoutContext);
 
     const getPrice = (priceString) => parseFloat(priceString.replace(/[^\d,]/g, '').replace(',', '.'));
+    const final = items.reduce((sum, item) => sum + getPrice(item.price), 0);
 
-    const totalPrice = items.reduce((sum, item) => {
-        return sum + getPrice(item.price);
-    }, 0);
-
-    return <div>{totalPrice}</div>;
+    return final.toFixed(2);
 };
 
-export { CheckoutContext, FinalPrice };
+
+export { CheckoutContext };
 export default CheckoutContext;
