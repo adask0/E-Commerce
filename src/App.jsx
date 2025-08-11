@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/header/Header";
 import Home from "./pages/Home";
 import ProductList from "./pages/ProductList";
+import FAQ from "./pages/FAQ";
 import { CheckoutProvider } from "./context/Context";
 import Checkout from "./pages/Checkout";
 
@@ -15,6 +16,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="lista-produktów" element={<ProductList/>}/>
                 <Route path="koszyk" element={<Checkout/>}/>
+                <Route path="faq" element={<FAQ/>}/>
             </Routes>
         </BrowserRouter>
     </CheckoutProvider>
